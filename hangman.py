@@ -4,7 +4,7 @@
 def Main():
     word = Get_Word()
     while (end == false):
-        check_letter (Jack)
+        Check_Letter (word, word_with_blanks, guesses, correct_guesses Jack)
         Print_Right_or_Wrong 
         Draw_Man (Jason)
         Write_Guesses
@@ -20,8 +20,8 @@ Def Get_Word():
     
 Def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
     "guess" = raw_input(‘Guess a letter’)
-    word = " "
-    if "guess" in word:        from stack exchange 
+    word =  
+    if "guess" in word:       # from stack exchange 
     print "you are right"
     if "guess" not in word:
     print "guess again"  
