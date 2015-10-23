@@ -26,9 +26,13 @@ Def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
         print "guess again"
     if guess in word:
         search = guess
-        sentence.find(search)
-        sentence[x]
-        word.replace
+        x =  sentence.find(search)
+        s = word
+        l = list(s)
+        l[x] = guess
+        news = "".join(l)
+        print news
+        
 
 
 Def Right_or_wrong(guess)
