@@ -19,12 +19,16 @@ Def Get_Word():
 
     
 Def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
-    "guess" = raw_input(‘Guess a letter’)
-    word =  
-    if "guess" in word:       # from stack exchange 
-    print "you are right"
-    if "guess" not in word:
-    print "guess again"  
+    guess = raw_input(‘Guess a letter’)
+    if guess in word:       # from stack exchange 
+        print "you are right"
+    if guess not in word:
+        print "guess again"
+    if guess in word:
+        search = guess
+        sentence.find(search)
+        sentence[x]
+        word.replace
 
 
 Def Right_or_wrong(guess)
