@@ -16,6 +16,7 @@ def Main():
         end = Check_end(word,word_with_blanks, guesses, correct_guesses)
 
 def Get_Word():
+    '''This function chooses a random word from the list of words and returns it'''
     words = ['dog', 'cat', 'wolf', 'fox', 'rabbit', 'parrot']
     return(random.choice(words))
 
@@ -47,7 +48,7 @@ def Right_or_wrong(guess):
     else:
         print("Oh No! You Guessed wrong")
 
-def Draw_Man(guesses, correct_guesses):
+def draw_man(guesses, correct_guesses):
     x = guesses-correct_guesses
     if x == 0:
         print(x," wrong,", 7-x, "lives left")
@@ -124,8 +125,8 @@ def Check_End(word, word_with_blanks, guesses, correct_guesses):
     x = guesses-correct_guesses
     if x == 7:
         print("Game over! You Lose!")
-        #!!!!!! - Some Sort Of End Thing - !!!!!!!
-    elif word == word_with_blanks:
+        return(true)
+    elif word_with_blanks:
         print("You Win! Congrats!")
     else:
         print("Keep Playing")
@@ -177,4 +178,4 @@ def Test_Check_End():
     Check_End("House","H__S_",["H","S"],["H","S","G","Q"])
     Check_End("Computer","_o____er",["O","E","R"],["E","S","E","Q","R"])
 
-Test_Check_Letter()
+test_draw_man()
