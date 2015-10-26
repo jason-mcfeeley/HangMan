@@ -25,7 +25,7 @@ def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
 
     e.g. if the word='cat' and the guess is 'a', it returns
     ["_A_",True] 
-    and if the guess were 'o' it would return...
+    and if the guess were 'o' it would return..
     ['___',False]
     '''
     guess = raw_input('Guess a letter')
