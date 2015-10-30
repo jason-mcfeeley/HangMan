@@ -25,7 +25,7 @@ def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
 
     e.g. if the word='cat' and the guess is 'a', it returns
     ["_A_",True] 
-    and if the guess were 'o' it would return..
+    and if the guess were 'o' it would return
     ['___',False]
     '''
     guess = raw_input('Guess a letter')
@@ -150,9 +150,9 @@ def Test_Check_Letter():
     Check_Letter("Sweater","_we___r",["W","E","R"],["W","Q","E","R"])
 
 
-def Test_Print_Right_Or_Wrong():
-    Print_Right_Or_Wrong(0)
-    Print_Right_Or_Wrong(1)
+def Test_Right_or_Wrong():
+    Right_or_wrong(0)
+    Right_or_wrong(1)
 
 def test_draw_man():
     draw_man(1,1)
@@ -177,4 +177,5 @@ def Test_Check_End():
     Check_End("House","H__S_",["H","S"],["H","S","G","Q"])
     Check_End("Computer","_o____er",["O","E","R"],["E","S","E","Q","R"])
 
-Test_Check_Letter()
+Test_Right_or_Wrong()
+
