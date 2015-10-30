@@ -47,9 +47,9 @@ def Right_or_wrong(guess):
         print("Oh No! You Guessed wrong")
 
 def draw_man(guesses, correct_guesses):
-    x = guesses-correct_guesses
+    x = len(guesses)-len(correct_guesses)
     if x == 0:
-        print(x," wrong,", 7-x, "lives left")
+        print(x,'wrong,', 7-x, 'lives left')
         print("   _______")
         print("  I        I")
         print("  I      ")
@@ -159,14 +159,15 @@ def Test_Right_or_Wrong():
     Right_or_wrong(1)
 
 def test_draw_man():
-    draw_man(1,1)
-    draw_man(1,0)
-    draw_man(4,2)
-    draw_man(6,3)
-    draw_man(9,5)
-    draw_man(8,3)
-    draw_man(8,2)
-    draw_man(7,0)
+    draw_man(["a"],["a"])
+    draw_man(["a","b"],["a"])
+    draw_man(["a","b","c"],["a"])
+    draw_man(["a","s","d","f"],["a","s"])
+    draw_man(["a","s","d","f","g","h"],["a","s","d"])
+    draw_man(["a","s","d","f","g","h","j","k","l"],["a","s","d","f","g"])
+    draw_man(["a","s","d","f","g","h","j","k"],["a","s","d"])
+    draw_man(["a","s","d","f","g","h","j","k"],["a","s"])
+    draw_man(["a","s","d","f","g","h","j"],[])
 
 def Test_Write_Guesses():
     Write_Guesses(["B","H","O","W"])
