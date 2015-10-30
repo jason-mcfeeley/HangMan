@@ -3,11 +3,16 @@ import random
 
 def Main():
     word = Get_Word()
+    word_with_blanks = Create_word_with_blanks(word)
     end = False
     guesses = []
     correct_guesses = []
     while (end == False):
-        word_with_blanks,correct = Check_Letter (word, word_with_blanks, guesses, correct_guesses)
+        letter_guess = Ask_letter(guesses)
+        word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
+        guesses = update_guesses(guesses, letter_guess)
+        correct_guesses = update_correct_guesses
+        '''word_with_blanks,correct = Check_Letter (word, word_with_blanks, guesses, correct_guesses)'''
         Draw_Man(guesses, correct_guesses)
         Write_Guesses(guesses)
         Write_Word_Guess(word_with_blanks)
@@ -17,17 +22,20 @@ def Get_Word():
     '''This function chooses a random word from the list of words and returns it'''
     words = ['dog', 'cat', 'wolf', 'fox', 'rabbit', 'parrot']
     return(random.choice(words))
+                                                   
+def Create_word_with_blanks(word):
+    '''Takes the word and returns a string with all letters replaced by underscores'''
+                                                   
+def Ask_letter():
+    '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
 
-def Ask_letter:
-    '''asks the user for their guess and returns that guess '''
-
-def update_word:
+def update_word_with_blanks(word, word_with_blanks, letter_guess):
     '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
 
-def update_guesses:
+def update_guesses(guesses, letter_guess):
     '''Takes the guessed letter and guesses  and updates the guesses string'''
 
-def update_correct_guesses:
+def update_correct_guesses(letter_guess, word):
     '''takes the guessed letter and word and updates list of correct guesses'''
 
 
@@ -165,13 +173,42 @@ def Test_Get_Word():
     word = Get_Word()
     print(word)
 
+def Test_Create_word_with_blanks():
+    '''Takes the word and returns a string with all letters replaced by underscores'''
+    for word in (["dog","tree","orange"]):
+        word_with_blanks = Create_word_with_blanks(word)
+        print("word was:", word)
+        print("with blanks is:" word_with_blanks)
+    
+def Test_Ask_letter():
+    '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
+    letter_guess = Ask_letter()
+    print(letter_guess)
+    letter_guess = Ask_letter()
+    print(letter_guess)
+    
+def Test_update_word_with_blanks():
+    '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
+    word = "dog"
+    word_with_blanks = "__g"
+    letter_guess = "d"
+    word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
+    print(word_with_blanks)
+    word = "tree"
+    word_with_blanks = "__ee"
+    letter_guess = "p"
+    word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
+    print(word_with_blanks)
 
-def Test_Check_Letter():
-    Check_Letter("House", "H__S_",["H","S"],["H","S","G","Q"])
-    Check_Letter("Computer","_o____er",["O","E","R"],["E","S","E","Q","R"])
-    Check_Letter("Sweater","_we___r",["W","E","R"],["W","Q","E","R"])
-
-
+    
+def Test_update_guesses():
+    '''Takes the guessed letter and guesses  and updates the guesses string'''
+    update_guesses(guesses, letter_guess)
+    
+def Test_update_correct_guesses():
+    '''takes the guessed letter and word and updates list of correct guesses'''
+    update_correct_guesses(letter_guess, word)
+    
 def Test_Right_or_Wrong():
     '''!!!Must be changed and rewritten!!!'''
     Right_or_wrong(0)
