@@ -18,7 +18,21 @@ def Get_Word():
     words = ['dog', 'cat', 'wolf', 'fox', 'rabbit', 'parrot']
     return(random.choice(words))
 
-    
+def Ask_letter:
+    '''asks the user for their guess and returns that guess '''
+
+def update_word:
+    '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
+
+def update_guesses:
+    '''Takes the guessed letter and guesses  and updates the guesses string'''
+
+def update_correct_guesses:
+    '''takes the guessed letter and word and updates list of correct guesses'''
+
+
+ ''' <This is being broken up into several new functions>
+  
 def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
     '''Asks user for input. Returns updated word list and if player is right or wrong
 
@@ -38,13 +52,17 @@ def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
         print news, "You're right!"
     if guess not in word:
         print "guess again"
- 
+ '''
 
 def Right_or_wrong(guess):
+    '''takes the word and guessed letter and prints if it was right or long'''
+
+'''   !!!!!Must be changed and rewritten!!!!
     if guess == 1:
         print("You Guessed Right!")
     else:
         print("Oh No! You Guessed wrong")
+'''
 
 def draw_man(guesses, correct_guesses):
     x = len(guesses)-len(correct_guesses)
@@ -155,6 +173,7 @@ def Test_Check_Letter():
 
 
 def Test_Right_or_Wrong():
+    '''!!!Must be changed and rewritten!!!'''
     Right_or_wrong(0)
     Right_or_wrong(1)
 
