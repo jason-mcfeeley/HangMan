@@ -169,7 +169,7 @@ def test_draw_man():
     draw_man(["a","s","d","f","g","h","j","k"],["a","s"])
     draw_man(["a","s","d","f","g","h","j"],[])
 
-def Test_Write_Guesses():
+def Test_write_guesses():
     Write_Guesses(["B","H","O","W"])
     Write_Guesses(["P","K","A","R","E"])
 
@@ -185,3 +185,5 @@ def Test_Check_End():
    print(end)
    end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
    print(end)
+
+Test_write_guesses()
