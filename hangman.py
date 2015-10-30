@@ -1,5 +1,5 @@
 # This is a file.
-
+import random
 
 def Main():
     word = Get_Word()
@@ -7,15 +7,14 @@ def Main():
     guesses = []
     correct_guesses = []
     while (end == False):
-        word_with_blanks,correct = Check_Letter (
-            word, word_with_blanks, guesses, correct_guesses
-            )
-        Draw_Man (guesses, correct_guesses)
+        word_with_blanks,correct = Check_Letter (word, word_with_blanks, guesses, correct_guesses)
+        Draw_Man(guesses, correct_guesses)
         Write_Guesses(guesses)
         Write_Word_Guess(word_with_blanks)
         end = Check_end(word,word_with_blanks, guesses, correct_guesses)
 
 def Get_Word():
+    '''This function chooses a random word from the list of words and returns it'''
     words = ['dog', 'cat', 'wolf', 'fox', 'rabbit', 'parrot']
     return(random.choice(words))
 
@@ -47,7 +46,7 @@ def Right_or_wrong(guess):
     else:
         print("Oh No! You Guessed wrong")
 
-def Draw_Man(guesses, correct_guesses):
+def draw_man(guesses, correct_guesses):
     x = guesses-correct_guesses
     if x == 0:
         print(x," wrong,", 7-x, "lives left")
@@ -120,15 +119,20 @@ def write_guesses(guesses):
 
 
 
-def Check_End(word, word_with_blanks, guesses, correct_guesses):
-    x = guesses-correct_guesses
-    if x == 7:
+def Check_End(word_with_blanks, correct_guesses, guesses):
+    a = len(guesses)
+    b = len(correct_guesses)
+    x = a-b
+    underscore = '_'
+    if x > 6:
         print("Game over! You Lose!")
-        #!!!!!! - Some Sort Of End Thing - !!!!!!!
-    elif word == word_with_blanks:
-        print("You Win! Congrats!")
+        return(0)
+    elif underscore in word_with_blanks:
+        print("keep playing")
+        return(1)
     else:
-        print("Keep Playing")
+        print("You Win!!!!")
+        return(0)
 
 ######TESTS#####
 
@@ -174,8 +178,9 @@ def Test_Write_Word_Guess():
     Write_Word_Guess("O__n_e")
 
 def Test_Check_End():
-    Check_End("House","H__S_",["H","S"],["H","S","G","Q"])
-    Check_End("Computer","_o____er",["O","E","R"],["E","S","E","Q","R"])
-
-Test_Right_or_Wrong()
-
+   end = (Check_End("H__S_",["H","S"],["H","S","G","Q"]))
+   print(end)
+   end = (Check_End("_o____er",["O","E","R"],["E","S","E","Q","R","A","B","C","D","F",]))
+   print(end)
+   end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
+   print(end)
