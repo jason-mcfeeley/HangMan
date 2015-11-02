@@ -26,8 +26,11 @@ def Get_Word():
 def Create_word_with_blanks(word):
     '''Takes the word and returns a string with all letters replaced by underscores'''
                                                    
-def Ask_letter():
+def Ask_letter(guesses):
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
+    guess=raw_input('Guess a letter')
+    if guess in guesses:
+        print"You already guessed that letter, guess again"
 
 def update_word_with_blanks(word, word_with_blanks, letter_guess):
     '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
@@ -242,4 +245,4 @@ def Test_Check_End():
    end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
    print(end)
 
-Test_write_guesses()
+Test_Ask_letter()
