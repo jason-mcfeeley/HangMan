@@ -26,7 +26,8 @@ def Get_Word():
                                                    
 def Create_word_with_blanks(word):
     '''Takes the word and returns a string with all letters replaced by underscores'''
-                                                   
+    len(word) 
+     
 def Ask_letter(guesses):
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
     guess=raw_input('Guess a letter')
