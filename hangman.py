@@ -76,6 +76,8 @@ def Right_or_wrong(letter_guess, word):
 
 
 def draw_man(guesses, correct_guesses):
+    '''draws the hangman/gallows based on the guesses and correct guess, no output'''
+    '''Made by Jason'''
     
     x = len(guesses)-len(correct_guesses)
     if x == 0:
@@ -144,12 +146,16 @@ def draw_man(guesses, correct_guesses):
         print("__I__     / \ ")
 
 def write_guesses(guesses):
+    '''prints out the list of guesses so far'''
+    '''made by Jason'''
     print("Your Guesses:", guesses)
 
 
 
 
 def Check_End(word_with_blanks, correct_guesses, guesses):
+    '''Determines if the game is won, lost, or should continue going. Uses word_with_blanks to determine if the game is won, Uses Correct_guess and Guesses to determine if it's lost  '''
+    '''Made By Jason'''
     a = len(guesses)
     b = len(correct_guesses)
     x = a-b
