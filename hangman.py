@@ -29,10 +29,16 @@ def Get_Word():
                                                    
 def Create_word_with_blanks(word):
     '''Takes the word and returns a string with all letters replaced by underscores'''
-                                                   
-def Ask_letter():
+    
+def Ask_letter(guesses):
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
-
+    '''Created by Jack'''
+    guess=raw_input('Guess a letter')
+    if guess in guesses:
+        while guess in guesses:
+            print"You already guessed that letter, guess again"
+            guess = raw_input('Guess a letter')
+    return guess
 def update_word_with_blanks(word, word_with_blanks, letter_guess):
     '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
 
@@ -191,6 +197,13 @@ def Test_Create_word_with_blanks():
         print("with blanks is:", word_with_blanks)
     
 def Test_Ask_letter():
+    '''made by jack'''
+    print("test 1:")
+    letter_guess = Ask_letter(['a','r','t','y','l'])
+    print("you guessed:", letter_guess, "which has not been guessed")
+    print("test 2:")
+    letter_guess = Ask_letter(['q','w','v','b','s'])
+    print("you guessed:", letter_guess, "which has not been guessed")def Test_Ask_letter():
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
     letter_guess = Ask_letter()
     print(letter_guess)
