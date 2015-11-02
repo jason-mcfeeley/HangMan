@@ -186,9 +186,9 @@ def Test_Create_word_with_blanks():
     
 def Test_Ask_letter():
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
-    letter_guess = Ask_letter()
+    letter_guess = Ask_letter('a','r','t','y','l')
     print(letter_guess)
-    letter_guess = Ask_letter()
+    letter_guess = Ask_letter('q','w','v','b','s')
     print(letter_guess)
     
 def Test_update_word_with_blanks():
@@ -249,3 +249,4 @@ def Test_Check_End():
    end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
    print(end)
 
+Test_Ask_letter()
