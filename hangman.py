@@ -4,19 +4,20 @@ import random
 def Main():
     word = Get_Word()
     word_with_blanks = Create_word_with_blanks(word)
-    end = False
+    end = 0
     guesses = []
     correct_guesses = []
-    while (end == False):
+    while (end == 0):
         letter_guess = Ask_letter(guesses)
         word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
         guesses = update_guesses(guesses, letter_guess)
-        correct_guesses = update_correct_guesses
+        correct_guesses = update_correct_guesses(letter_guess, word, correct_guesses)
         '''word_with_blanks,correct = Check_Letter (word, word_with_blanks, guesses, correct_guesses)'''
         Draw_Man(guesses, correct_guesses)
         Write_Guesses(guesses)
         Write_Word_Guess(word_with_blanks)
         end = Check_end(word,word_with_blanks, guesses, correct_guesses)
+    print("The End")
 
 def Get_Word():
     '''This function chooses a random word from the list of words and returns it'''
@@ -35,20 +36,20 @@ def update_word_with_blanks(word, word_with_blanks, letter_guess):
 def update_guesses(guesses, letter_guess):
     '''Takes the guessed letter and guesses  and updates the guesses string'''
 
-def update_correct_guesses(letter_guess, word):
+def update_correct_guesses(letter_guess, word, correct_guesses):
     '''takes the guessed letter and word and updates list of correct guesses'''
 
 
- ''' <This is being broken up into several new functions>
+''' <This is being broken up into several new functions>
   
 def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
-    '''Asks user for input. Returns updated word list and if player is right or wrong
+    ''Asks user for input. Returns updated word list and if player is right or wrong
 
     e.g. if the word='cat' and the guess is 'a', it returns
     ["_A_",True] 
     and if the guess were 'o' it would return
     ['___',False]
-    '''
+    ''
     guess = raw_input('Guess a letter')
     if guess in word:
         search = guess
@@ -178,7 +179,7 @@ def Test_Create_word_with_blanks():
     for word in (["dog","tree","orange"]):
         word_with_blanks = Create_word_with_blanks(word)
         print("word was:", word)
-        print("with blanks is:" word_with_blanks)
+        print("with blanks is:", word_with_blanks)
     
 def Test_Ask_letter():
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
@@ -203,11 +204,14 @@ def Test_update_word_with_blanks():
     
 def Test_update_guesses():
     '''Takes the guessed letter and guesses  and updates the guesses string'''
-    update_guesses(guesses, letter_guess)
+    update_guesses(["a","s","d","f","g","h"],"i")
+    update_guesses(["a","s","d",],"f")
+    update_guesses(["a","s","d","f","g","h","i","j","k"],"l")
     
 def Test_update_correct_guesses():
     '''takes the guessed letter and word and updates list of correct guesses'''
-    update_correct_guesses(letter_guess, word)
+    update_correct_guesses("a", "bat", ["b"])
+    update_correct_guesses("g", "orange", ["o","n"])
     
 def Test_Right_or_Wrong():
     '''!!!Must be changed and rewritten!!!'''
@@ -226,8 +230,8 @@ def test_draw_man():
     draw_man(["a","s","d","f","g","h","j"],[])
 
 def Test_write_guesses():
-    Write_Guesses(["B","H","O","W"])
-    Write_Guesses(["P","K","A","R","E"])
+    write_guesses(["B","H","O","W"])
+    write_guesses(["P","K","A","R","E"])
 
 def Test_Write_Word_Guess():
     Write_Word_Guess("B_t")
@@ -242,4 +246,3 @@ def Test_Check_End():
    end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
    print(end)
 
-Test_write_guesses()
