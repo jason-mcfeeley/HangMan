@@ -44,7 +44,7 @@ def update_word_with_blanks(word, word_with_blanks, letter_guess):
 
 def update_guesses(guesses, letter_guess):
     '''Takes the guessed letter and guesses  and updates the guesses string'''
-    #made by Jasonprint(guesses)
+    #made by Jason
     if letter_guess in guesses:
         return guesses
     else:
@@ -54,30 +54,12 @@ def update_guesses(guesses, letter_guess):
     
 def update_correct_guesses(letter_guess, word, correct_guesses):
     '''takes the guessed letter and word and updates list of correct guesses'''
-
-
-''' <This is being broken up into several new functions>
-  
-def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
-    ''Asks user for input. Returns updated word list and if player is right or wrong
-
-    e.g. if the word='cat' and the guess is 'a', it returns
-    ["_A_",True] 
-    and if the guess were 'o' it would return
-    ['___',False]
-    ''
-    guess = raw_input('Guess a letter')
-    if guess in word:
-        search = guess
-        x = word.find(search)
-        s = word
-        l = list(s)
-        l[x] = guess
-        news = "".join(l)
-        print news, "You're right!"
-    if guess not in word:
-        print "guess again"
- '''
+    #Made by Jason
+    if letter_guess in word:
+        correct_guesses.append(letter_guess)
+        return correct_guesses
+    else:
+        return correct_guesses
 
 def Right_or_wrong(letter_guess, word):
     '''takes the word and guessed letter and prints if it was right or long'''
