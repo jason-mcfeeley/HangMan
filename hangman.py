@@ -2,6 +2,7 @@
 import random
 
 def Main():
+    '''Joint Effort between Jason, Jack and Mr. H, runs the entire game'''
     word = Get_Word()
     word_with_blanks = Create_word_with_blanks(word)
     end = 0
@@ -13,6 +14,7 @@ def Main():
         guesses = update_guesses(guesses, letter_guess)
         correct_guesses = update_correct_guesses(letter_guess, word, correct_guesses)
         '''word_with_blanks,correct = Check_Letter (word, word_with_blanks, guesses, correct_guesses)'''
+        Right_or_wrong(letter_guess, word)
         Draw_Man(guesses, correct_guesses)
         Write_Guesses(guesses)
         Write_Word_Guess(word_with_blanks)
@@ -21,24 +23,25 @@ def Main():
 
 def Get_Word():
     '''This function chooses a random word from the list of words and returns it'''
+    '''Created by Jason'''
     words = ['dog', 'cat', 'wolf', 'fox', 'rabbit', 'parrot']
     return(random.choice(words))
                                                    
 def Create_word_with_blanks(word):
-    '''Takes the word and returns a string with all letters replaced by underscores'''
-    len(word) 
+    '''Takes the word and returns a string with all letters replaced by underscores  made by Jack '''
+    n = len(word)
+    return  n * '_ '
      
 def Ask_letter(guesses):
+                not done                                    
+def Ask_letter():
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
-    guess=raw_input('Guess a letter')
-    if guess in guesses:
-        while guess in guesses:
-            print"You already guessed that letter, guess again"
-            guess = raw_input('Guess a letter')
-    return guess
 
 def update_word_with_blanks(word, word_with_blanks, letter_guess):
     '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
+    pos = word.find(guess)
+    for pos in word replace with guess
+    
 
 def update_guesses(guesses, letter_guess):
     '''Takes the guessed letter and guesses  and updates the guesses string'''
@@ -70,17 +73,17 @@ def Check_Letter(word, word_with_blanks, guesses, correct_guesses ):
         print "guess again"
  '''
 
-def Right_or_wrong(guess):
+def Right_or_wrong(letter_guess, word):
     '''takes the word and guessed letter and prints if it was right or long'''
-
-'''   !!!!!Must be changed and rewritten!!!!
-    if guess == 1:
-        print("You Guessed Right!")
+    '''Made By Jason'''
+    if letter_guess in word:
+        print("Congratulations! ",letter_guess," Is in the word!")
     else:
-        print("Oh No! You Guessed wrong")
-'''
+        print("Sorry :(,", letter_guess, " is not in the word")
+
 
 def draw_man(guesses, correct_guesses):
+    
     x = len(guesses)-len(correct_guesses)
     if x == 0:
         print(x,'wrong,', 7-x, 'lives left')
@@ -190,13 +193,10 @@ def Test_Create_word_with_blanks():
     
 def Test_Ask_letter():
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
-    '''made by jack'''
-    print("test 1:")
-    letter_guess = Ask_letter(['a','r','t','y','l'])
-    print("you guessed:", letter_guess, "which has not been guessed")
-    print("test 2:")
-    letter_guess = Ask_letter(['q','w','v','b','s'])
-    print("you guessed:", letter_guess, "which has not been guessed")
+    letter_guess = Ask_letter()
+    print(letter_guess)
+    letter_guess = Ask_letter()
+    print(letter_guess)
     
 def Test_update_word_with_blanks():
     '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
@@ -224,9 +224,8 @@ def Test_update_correct_guesses():
     update_correct_guesses("g", "orange", ["o","n"])
     
 def Test_Right_or_Wrong():
-    '''!!!Must be changed and rewritten!!!'''
-    Right_or_wrong(0)
-    Right_or_wrong(1)
+    Right_or_wrong("a", "bat")
+    Right_or_wrong("c", "boat")
 
 def test_draw_man():
     draw_man(["a"],["a"])
@@ -256,4 +255,5 @@ def Test_Check_End():
    end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
    print(end)
 
-Test_Ask_letter()
+
+Test_Create_word_with_blanks()
