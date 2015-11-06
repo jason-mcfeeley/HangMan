@@ -1,7 +1,7 @@
 # This is a file.
 import random
 
-def Main():
+def PlayHangman():
     '''Joint Effort between Jason, Jack and Mr. H, runs the entire game'''
     word = Get_Word()
     word_with_blanks = Create_word_with_blanks(word)
@@ -9,34 +9,42 @@ def Main():
     guesses = []
     correct_guesses = []
     while (end == 0):
-        Draw_Man(guesses, correct_guesses)
-        Write_Guesses(guesses)
-        Write_Word_Guess(word_with_blanks)
+        print(' ')
+        draw_man(guesses, correct_guesses)
+        write_guesses(guesses)
+        write_word_guess(word_with_blanks)
+        print("><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><")
         letter_guess = Ask_letter(guesses)
         word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
         guesses = update_guesses(guesses, letter_guess)
         correct_guesses = update_correct_guesses(letter_guess, word, correct_guesses)
-        #word_with_blanks,correct = Check_Letter (word, word_with_blanks, guesses, correct_guesses)
         Right_or_wrong(letter_guess, word)
-        end = Check_end(word,word_with_blanks, guesses, correct_guesses)
+        end = Check_End(word_with_blanks, correct_guesses, guesses)
     print("The End")
 
+def write_word_guess(word_with_blanks):
+    x = len(word_with_blanks)
+    print(x," letters")
+    print(word_with_blanks)
+
+
+    
 def Get_Word():
     '''Chooses a random word from the list of words and returns it'''
     # Created by Jason
-    words = ['dog', 'cat', 'wolf', 'fox', 'rabbit', 'parrot']
+    words = ['dog','cat', 'wolf', 'fox', 'car', 'orange','window','case','bike','computer','table','poster','sign','zebra','zinc','countryside','parking','plant','chair','arm','ibex']
     return(random.choice(words))
                                                    
 def Create_word_with_blanks(word):
 
     '''Takes the word and returns a string with all letters replaced by underscores  made by Jack '''
     n = len(word)
-    return  n * '_ '
+    return  n * '_'
          
 def Ask_letter(guesses):
     '''asks the user for their guess and returns that guess, uses guesses to ensure they don't re-use a letter '''
     #Created by Jack
-    guess=raw_input('Guess a letter')
+    guess=raw_input('Guess a letter: ')
     if guess in guesses:
         while guess in guesses:
             print"You already guessed that letter, guess again"
@@ -45,8 +53,16 @@ def Ask_letter(guesses):
 
 def update_word_with_blanks(word, word_with_blanks, letter_guess):
     '''takes the word, word with blanks and the letter guess and returns an updated version of the word_with_blanks '''
-    pos = word.find(guess)
-    for pos in word replace with guess
+    #Jason and Jack Togetherrrrrrr
+    if letter_guess in word:
+        pos = word.find(letter_guess)
+        wwblist = list(word_with_blanks)
+        wwblist[pos] = letter_guess
+        word_with_blanks = ''.join(wwblist)
+        return word_with_blanks
+    else:
+        return word_with_blanks
+    
     
 
 def update_guesses(guesses, letter_guess):
@@ -157,20 +173,21 @@ def write_guesses(guesses):
 
 def Check_End(word_with_blanks, correct_guesses, guesses):
     '''Determines if the game is won, lost, or should continue going. Uses word_with_blanks to determine if the game is won, Uses Correct_guess and Guesses to determine if it's lost  '''
-    '''Made By Jason'''
+    #Made By Jason
     a = len(guesses)
     b = len(correct_guesses)
     x = a-b
     underscore = '_'
     if x > 6:
         print("Game over! You Lose!")
-        return(0)
+        return(1)
     elif underscore in word_with_blanks:
         print("keep playing")
-        return(1)
+        return(0)
     else:
         print("You Win!!!!")
-        return(0)
+        print("The Word Was ",word_with_blanks)
+        return(1)
 
 ######TESTS#####
 
@@ -207,11 +224,19 @@ def Test_update_word_with_blanks():
     word = "dog"
     word_with_blanks = "__g"
     letter_guess = "d"
+    print("word was:", word, "word with blanks was", word_with_blanks,"letter guess was", letter_guess)
     word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
-    print(word_with_blanks)
+    print("new word with blanks is:", word_with_blanks)
     word = "tree"
     word_with_blanks = "__ee"
-    letter_guess = "p"
+    letter_guess = "t"
+    print("word was:", word, "word with blanks was", word_with_blanks,"letter guess was", letter_guess)
+    word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
+    print(word_with_blanks)
+    word = "orange"
+    word_with_blanks = "o____e"
+    letter_guess = "q"
+    print("word was:", word, "word with blanks was", word_with_blanks,"letter guess was", letter_guess)
     word_with_blanks = update_word_with_blanks(word, word_with_blanks, letter_guess)
     print(word_with_blanks)
 
@@ -268,3 +293,4 @@ def Test_Check_End():
    end = (Check_End("BOAT",["B","O","A","T"],["B","S","O","T","A"]))
    print(end)
 
+PlayHangman()
